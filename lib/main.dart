@@ -3,12 +3,12 @@ import 'package:gym_routine/pages/pages.dart';
 
 void main() => runApp(const MyApp());
 
-class  MyApp extends StatelessWidget {
+class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return  MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Gym Routine App',
       initialRoute: 'login',
