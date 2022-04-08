@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:gym_routine/pages/pages.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:gym_routine/routers.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -17,10 +17,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Gym Routine App',
       initialRoute: 'login',
-      routes: {
-        'login': (_) => const LoginScreen(),
-        'home': (_) => const HomeScreen()
-      },
+      onGenerateRoute: Routers.generateRoute,
       theme:
           ThemeData.light().copyWith(scaffoldBackgroundColor: Colors.grey[300]),
     );
