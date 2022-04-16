@@ -96,10 +96,8 @@ class _LoginFormState extends State<LoginForm> {
                       child: SwitchListTile(
                         title: const Text('Already a member?'),
                         value: _registered,
-                        onChanged: _loading
-                            ? null
-                            : (bool value) =>
-                                setState(() => _registered = !_registered),
+                        onChanged: (bool value) =>
+                            setState(() => _registered = !_registered),
                       ),
                     ),
                     MaterialButton(
@@ -116,28 +114,24 @@ class _LoginFormState extends State<LoginForm> {
                           style: const TextStyle(color: Colors.white),
                         ),
                       ),
-                      onPressed: _loading
-                          ? null
-                          : () {
-                              if (_formKey.currentState!.validate()) {
-                                if (_registered) {
-                                  setState(() {
-                                    _loading = true;
-                                  });
-                                  _auth
-                                      .login(
-                                          _email.text, _password.text, context)
-                                      .whenComplete(() =>
-                                          setState(() => _loading = false));
-                                } else {
-                                  _auth
-                                      .register(
-                                          _email.text, _password.text, context)
-                                      .whenComplete(() =>
-                                          setState(() => _loading = false));
-                                }
-                              }
-                            },
+                      onPressed: () {
+                        if (_formKey.currentState!.validate()) {
+                          if (_registered) {
+                            setState(() {
+                              _loading = true;
+                            });
+                            _auth
+                                .login(_email.text, _password.text, context)
+                                .whenComplete(
+                                    () => setState(() => _loading = false));
+                          } else {
+                            _auth
+                                .register(_email.text, _password.text, context)
+                                .whenComplete(
+                                    () => setState(() => _loading = false));
+                          }
+                        }
+                      },
                     ),
                   ],
                 );
