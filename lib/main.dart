@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:gym_routine/widgets/auth_check.dart';
 import 'package:gym_routine/pages/pages.dart';
 
 import 'package:gym_routine/routers.dart';
@@ -25,7 +26,7 @@ class MyApp extends ConsumerWidget {
       title: 'Gym Routine App',
       onGenerateRoute: Routers.generateRoute,
       home: initialize.when(data: (data) {
-        return const LoginScreen();
+        return const AuthChecker();
       }, error: (e, stackTrace) {
         return const ErrorScreen();
       }, loading: () {
